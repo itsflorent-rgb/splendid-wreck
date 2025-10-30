@@ -59,8 +59,9 @@ export default function Home() {
       setSlug(newSlug);
       setAdminKey(newAdminKey);
       setText("");
-    } catch (err: any) {
-      setError(err?.message ?? "Something went wrong.");
+    } catch (err: unknown) {
+  if (err instanceof Error) setError(err.message);
+  else setError("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -68,7 +69,7 @@ export default function Home() {
 
   async function handleCopy() {
     if (!shareUrl) return;
-    const msg = `Help me complete my thought on ship wreck:\n${shareUrl}\n\nOpen the link and add the next line. You’ll only see the previous line until the end!`;
+    const msg = `Help me finish my Splendid Wreck story:\n${shareUrl}\n\nOpen the link and add the next line. You’ll only see the previous line until the end!`;
     await navigator.clipboard.writeText(msg);
     alert("Copied!");
   }
@@ -78,14 +79,14 @@ export default function Home() {
       {/* tiny, out-of-the-way header */}
       <header className="pointer-events-none absolute left-3 top-3 flex items-center gap-2">
         <Image
-          src="/logo-shipwreck.png"
-          alt="ship wreck logo"
+          src="/logo-splendidwreck.png"
+          alt="Splendid wreck logo"
           width={28}
           height={28}
           className="opacity-90"
           priority
         />
-        <span className="text-xs uppercase tracking-widest opacity-80">ship wreck</span>
+        <span className="text-xs uppercase tracking-widest opacity-80">splendid wreck</span>
       </header>
 
     <section className="min-h-screen bg-pink-500 text-white flex items-center justify-center p-6">
@@ -127,7 +128,7 @@ export default function Home() {
 
             <div className="rounded-2xl border border-white/50 p-5 text-left">
               <p className="whitespace-pre-wrap text-sm">
-                {`Help me complete the story on Ship Wreck:\n${shareUrl}\n\nOpen the link and add the next line. Each player only sees the previous line!`}
+                {`Help me complete the story on Splendid Wreck:\n${shareUrl}\n\nOpen the link and add the next line. Each player only sees the previous line!`}
               </p>
             </div>
 

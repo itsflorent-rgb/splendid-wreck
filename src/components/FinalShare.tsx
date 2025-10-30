@@ -7,7 +7,7 @@ import { pressStart } from "@/app/fonts";
 
 /**
  * Renders a single, share-ready visual of the finished story,
- * with the ship wreck logo and the whole story as one paragraph.
+ * with the splendid wreck logo and the whole story as one paragraph.
  * White on pink, Press Start 2P.
  */
 export default function FinalShare({
@@ -32,11 +32,11 @@ export default function FinalShare({
       });
       const a = document.createElement("a");
       a.href = dataUrl;
-      a.download = `ship-wreck-${slug}.png`;
+      a.download = `splendid-wreck-${slug}.png`;
       a.click();
-    } catch (e) {
-      alert("Could not generate image. Try again.");
-    } finally {
+   } catch {
+  alert("Could not generate image. Try again.");
+} finally {
       setDownloading(false);
     }
   }
@@ -60,15 +60,15 @@ export default function FinalShare({
         {/* Tiny header inside the image */}
         <div className="flex items-center gap-2 mb-6">
           <Image
-            src="/logo-shipwreck.png"
-            alt="ship wreck logo"
+            src="/logo-splendidwreck.png"
+            alt="splendid wreck logo"
             width={28}
             height={28}
             className="opacity-90"
             priority
           />
           <span className="text-xs uppercase tracking-widest opacity-80">
-            ship wreck
+            splendid wreck
           </span>
         </div>
 

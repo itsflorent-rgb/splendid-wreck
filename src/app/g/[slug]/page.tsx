@@ -5,6 +5,7 @@ import { pressStart } from "@/app/fonts";
 import EndStoryButton from "@/components/EndStoryButton";
 import ComposerBox from "@/components/ComposerBox";
 import FinalShare from "@/components/FinalShare";
+import Link from "next/link";
 
 type Props = {
   params: { slug: string };
@@ -40,18 +41,18 @@ export default async function GamePage({ params, searchParams }: Props) {
 
         <section className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center p-6 text-center">
           <h1 className="mb-3 text-3xl font-semibold">No game found</h1>
-          <a
+          <Link
             href="/"
             className="mt-6 rounded-full border border-white/50 px-3 py-1 text-xs uppercase tracking-widest hover:bg-white/10 transition"
           >
             start your own
-          </a>
+          </Link>
         </section>
       </main>
     );
   }
 
-  const isHost = !!hostParam && hostParam === (game as any).admin_key;
+const isHost = !!hostParam && hostParam === game.admin_key;
 
   // entries (need last one for composer)
   const { data: entriesRaw } = await supabase
